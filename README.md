@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 # 📘 CertifyMe — Full Stack Intern Assessment
 
 ---
@@ -201,3 +202,6 @@ This project is part of the **CertifyMe Full Stack Intern Assessment**. The repo
 - Delete permanently from the database
 - Remove from UI immediately **without page refresh**
 - Only the creator admin can delete their own opportunity
+=======
+# Flask_Backend
+>>>>>>> 33520c81e66dbc03b87e1f5b19bdcf959ec826d7
