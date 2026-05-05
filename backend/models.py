@@ -9,7 +9,7 @@ class User(db.Model):
     reset_token = db.Column(db.String(200), nullable=True)
     reset_token_expiry = db.Column(db.DateTime, nullable=True)
 class Opportunity(db.Model):
-    id = db.Column(db.Integer, primary_key=True)
+    id = db.Column(db.Integer, primary_key=True,autoincrement=True)
     name = db.Column(db.String(100), nullable=False)
     duration = db.Column(db.String(50), nullable=False)
     start_date = db.Column(db.String(50), nullable=False)

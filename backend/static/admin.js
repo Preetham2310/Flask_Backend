@@ -1,5 +1,18 @@
 let editMode = false;
 let editId = null;
+const sidebar = document.getElementById('sidebar');
+const overlay = document.getElementById('sidebarOverlay');
+
+function toggleSidebar() {
+    sidebar.classList.toggle('open');
+    overlay.classList.toggle('active');
+}
+
+// 🔥 CLICK OUTSIDE TO CLOSE
+overlay.addEventListener('click', function () {
+    sidebar.classList.remove('open');
+    overlay.classList.remove('active');
+});
 const captchas = { login:'', signup:'', forgot:'' };
 function generateCaptcha(type) {
     const chars = 'ABCDEFGHJKLMNPQRSTUVWXYZabcdefghjkmnpqrstuvwxyz23456789';
@@ -386,18 +399,20 @@ document.getElementById('opportunityModal').addEventListener('click', function(e
 // });
 document.getElementById('opportunityForm').addEventListener('submit', async function(e) {
     e.preventDefault();
+    console.log("ADMIN ID (Submit):", localStorage.getItem("admin_id"));
 
     const data = {
         name: document.getElementById('oppName').value,
-        duration: document.getElementById('oppDuration').value,
+        duration: document.getElementById('oppDuration').value.trim(),
         start_date: document.getElementById('oppStartDate').value,
-        description: document.getElementById('oppDescription').value,
-        skills: document.getElementById('oppSkills').value,
+        description: document.getElementById('oppDescription').value.trim(),
+        skills: document.getElementById('oppSkills').value.trim(),
         category: document.getElementById('oppCategory').value,
-        future_opportunities: document.getElementById('oppFuture').value,
+        future_opportunities: document.getElementById('oppFuture').value.trim(),
         max_applicants: document.getElementById('oppMaxApplicants').value,
         admin_id: localStorage.getItem("admin_id")
     };
+    console.log("Category:", data.category);
 
     // Validation
     if (!data.name || !data.duration || !data.start_date || !data.description || !data.skills || !data.category || !data.future_opportunities) {
@@ -466,7 +481,7 @@ function addOpportunityToUI(opp) {
 
         <div class="opportunity-footer">
             <span>${opp.category}</span>
-            <div>
+            <div class="btn-group">
               <button class="view-course-btn">View Details</button>
               <button class="edit-btn">Edit</button>
               <button class="delete-btn">Delete</button>
@@ -1028,6 +1043,7 @@ document.getElementById("forgotForm").addEventListener("submit", async function(
 });
 // ===== LOAD OPPORTUNITIES (US-2.3) =====
 async function loadOpportunities() {
+    console.log("ADMIN ID (Load):", localStorage.getItem("admin_id"));
     const admin_id = localStorage.getItem("admin_id");
 
     if (!admin_id) return;

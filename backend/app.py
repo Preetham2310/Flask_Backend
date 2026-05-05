@@ -12,6 +12,7 @@ def create_app():
     app.config['SECRET_KEY'] = 'secret'
 
     db.init_app(app)
+    migrate=Migrate(app, db)
     CORS(app)
     @app.route('/')
     def home():

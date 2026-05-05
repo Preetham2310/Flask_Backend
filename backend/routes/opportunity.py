@@ -8,7 +8,7 @@ def get_opportunities():
 
     # 🔴 For now (temporary): assume logged-in user = 1
     admin_id = request.args.get('admin_id')
-
+    opportunities = Opportunity.query.filter_by(admin_id=admin_id).all()
     if not admin_id:
         return jsonify({"error": "admin_id is required"}), 400
 
@@ -49,6 +49,15 @@ def add_opportunity():
     max_applicants = data.get('max_applicants')
     admin_id = data.get('admin_id')
 
+    admin_id = data.get('admin_id')
+
+    try:
+        admin_id = int(admin_id)
+        if admin_id <= 0:
+            raise ValueError
+    except:
+        return jsonify({"error": "Invalid admin_id"}), 400
+
     # 🔹 Validation
     if not all([name, duration, start_date, description, skills, category, future_opportunities, admin_id]):
         return jsonify({"error": "All required fields must be filled"}), 400
@@ -73,7 +82,8 @@ def add_opportunity():
 
     db.session.add(new_opportunity)
     db.session.commit()
-
+    all_data = Opportunity.query.all()
+    print("ALL OPPORTUNITIES IN DB:", all_data)
     return jsonify({
         "message": "Opportunity created successfully",
         "data": {

@@ -376,7 +376,19 @@ body::after {
 .sidebar-logo-text span:last-child {
     font-size: 10px; color: var(--qf-text-light);
 }
+.sidebar-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    z-index: 40;
+    display: none;
+}
 
+.sidebar-overlay.active {
+    display: block;
+}
 .sidebar-profile {
     padding: 20px;
     display: flex; align-items: center; gap: 12px;
@@ -1141,6 +1153,13 @@ body::after {
     font-weight: 700;
     color: var(--qf-text);
 }
+.btn-group {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;  /* 🔥 this gives spacing */
+    width: 140px;
+    flex-shrink: 0;
+}
 .view-course-btn {
     width: 100%;
     padding: 10px;
@@ -1155,6 +1174,39 @@ body::after {
 }
 .view-course-btn:hover {
     background: var(--qf-green-dark);
+}
+.edit-btn {
+    width: 140px;
+    padding: 10px;
+    border: none;
+    border-radius: 8px;
+    background: var(--qf-green);
+    color: #fff;
+    font-size: 13px;
+    font-weight: 500;
+    cursor: pointer;
+    transition: var(--transition);
+}
+.edit-btn:hover {
+    background: var(--qf-green-dark);
+}
+.delete-btn {
+    width: 140px;
+    padding: 10px;
+    border: none;
+    border-radius: 8px;
+    background: var(--qf-red);
+    color: #fff;
+    font-size: 13px;
+    font-weight: 500;
+    cursor: pointer;
+    transition: var(--transition);
+    outline: 2px solid red;
+    box-sizing: border-box;
+}
+.delete-btn:hover {
+    /* background: var(--qf-red-dark); */
+    transform: none;
 }
 
 /* Opportunity Cards */
@@ -1262,7 +1314,7 @@ body::after {
 .opportunity-footer {
     display: flex;
     justify-content: space-between;
-    align-items: center;
+    align-items: flex-start;
     padding-top: 16px;
     border-top: 1px solid var(--qf-border);
 }

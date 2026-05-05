@@ -255,12 +255,13 @@
                 </button>
             </div>
         </nav>
-
+        <div class="sidebar-overlay" id="sidebarOverlay"></div>
         <!-- Main -->
         <main class="dash-main">
             <header class="topbar">
                 <div style="display:flex;align-items:center;gap:12px;">
-                    <button class="topbar-btn" id="menuToggle" onclick="document.getElementById('sidebar').classList.toggle('open')" style="display:none;">
+                    <!-- <button class="topbar-btn" id="menuToggle" onclick="document.getElementById('sidebar').classList.toggle('open')" style="display:none;"> -->
+                    <button class="topbar-btn" id="menuToggle" onclick="toggleSidebar()" style="display:none;">   
                         <svg viewBox="0 0 24 24"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/></svg>
                     </button>
                     <h2 id="pageTitle">Dashboard</h2>
@@ -1971,12 +1972,12 @@
                         <svg class="input-icon" viewBox="0 0 24 24"><path d="M22 19a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h5l2 3h9a2 2 0 0 1 2 2z"/></svg>
                         <select id="oppCategory" required>
                             <option value="">Select Category</option>
-                            <option value="technology">Technology</option>
-                            <option value="business">Business</option>
-                            <option value="design">Design</option>
-                            <option value="marketing">Marketing</option>
-                            <option value="data">Data Science</option>
-                            <option value="other">Other</option>
+                            <option value="Technology">Technology</option>
+                            <option value="Business">Business</option>
+                            <option value="Design">Design</option>
+                            <option value="Marketing">Marketing</option>
+                            <option value="Data Science">Data Science</option>
+                            <option value="Other">Other</option>
                         </select>
                     </div>
                 </div>
